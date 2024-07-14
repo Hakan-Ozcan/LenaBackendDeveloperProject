@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>(options =>
-            options.UseSqlServer("Server=SAWRNTGOYZLM6\\SQLEXPRESS;Database=LenaAppDb;Trusted_Connection=SSPI;MultipleActiveResultSets=true;TrustServerCertificate=true"));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<FormService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<FormSubmissionService>();

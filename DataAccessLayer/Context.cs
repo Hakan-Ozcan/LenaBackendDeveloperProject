@@ -11,11 +11,10 @@ namespace DataAccessLayer
 {
     public class Context : DbContext
     {
-        public Context()
+        public Context(DbContextOptions<Context> options)
+             : base(options)
         {
-
         }
-
         public DbSet<Form> Forms { get; set; }
         public DbSet<FormField> FormFields { get; set; }
         public DbSet<User> Users { get; set; }
