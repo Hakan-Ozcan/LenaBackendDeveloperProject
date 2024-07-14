@@ -24,7 +24,6 @@ namespace LenaBackendDeveloperProject.Controllers
             var user = await _userService.AuthenticateAsync(username, password);
             if (user != null)
             {
-                // Set user session or authentication
                 return RedirectToAction("Index", "Home");
             }
             ModelState.AddModelError("", "Invalid username or password");
