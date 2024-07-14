@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EntityLayer.Form>
+
+@{
+    ViewData["Title"] = "Forms";
+}
+
+<h2>Forms</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var form in Model)
+        {
+            <tr>
+                <td>@form.Name</td>
+                <td>@form.Description</td>
+                <td>@form.CreatedAt.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@form.Id" class="btn btn-primary">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@form.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Create New Form</a>
